@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewpdisplay.value +=7ort" content="width=device-width, initial-scale=1.0">
+      <title>Simple Calculator</title>
+      <link rel="stylesheet" href="calculator.css">
+   </head>
+   <body>
+      <div class="container">
+         <div class="calculator">
+            <form>
+               <div class="display">
+                  <input type="text" name="display" value='0' id="display">
+               </div>
+               <div>
+                  <input type="button" value="AC" onclick="operator('ac')">
+                  <input type="button" value="De" onclick="operator('de')">
+                  <input type="button" value="%" onclick="operator('%')">
+                  <input type="button" value="/" onclick="operator('/')">
+               </div>
+               <div>
+                  <input type="button" value="7" onclick="displayController('7')">
+                  <input type="button" value="8" onclick="displayController('8')">
+                  <input type="button" value="9" onclick="displayController('9')">
+                  <input type="button" value="*" onclick="operator('*')">
+               </div>
+               <div>
+                  <input type="button" value="4" onclick="displayController('4')">
+                  <input type="button" value="5" onclick="displayController('5')">
+                  <input type="button" value="6" onclick="displayController('6')">
+                  <input type="button" value="-" onclick="operator('-')">
+               </div>
+               <div>
+                  <input type="button" value="1" onclick="displayController('1')">
+                  <input type="button" value="2" onclick="displayController('2')">
+                  <input type="button" value="3" onclick="displayController('3')">
+                  <input type="button" value="+"onclick="operator('+')">
+               </div>
+               <div>
+                  <input type="button" value="+/-" onclick="displayController('+/-')">
+                  <input type="button" value="0" onclick="displayController('0')">
+                  <input type="button" value="." onclick="displayController('.')">
+                  <input type="button" value="=" onclick="operator('=')">
+               </div>
+            </form>
+         </div>
+      </div>
+      <script>
+         let display=0;
+         let currentOp='+';
+         function displayController(key){
+          operand=document.getElementById("display").value;
+          
+            if(operand=='0'){
+               operand=key;
+               
+            }
+            else{
+               operand +=key;
+              
+            }
+            document.getElementById("display").value=operand;
+         
+         }
+         function operator(operator){
+           
+            switch (operator){
+              
+               case '+':
+                  currentOp=operator;
+                  display=display+Number(operand);
+                  document.getElementById("display").value='';
+                  break;
+               case '-':
+                  currentOp=operator;
+                  display=display-Number(operand);
+                  document.getElementById("display").value='';
+                  break;
+         
+                  case '*':
+                  currentOp=operator;
+                  display=1;
+                  display=display*Number(operand);
+                  document.getElementById("display").value='';
+                     break;
+                  
+                  case '/':
+                  currentOp=operator;
+                  display=1; 
+                  
+                  display=display/Number(operand);
+                  document.getElementById("display").value='';
+                  break;
+                  case '%':
+                     currentOp="%"
+                  display=1; 
+                  display=display/Number(operand);
+                  document.getElementById("display").value='';
+                  break;
+         
+         
+               case '=': 
+                  display=Operation(currentOp,display,operand)
+                  document.getElementById("display").value=display;
+                  
+                  break;
+               case 'de':
+               
+                  operand=operand.slice(0,-1);
+                  document.getElementById("display").value= operand;
+                  console.log(operand)
+                  break;
+               case 'ac':
+               document.getElementById("display").value= ' ';
+                break;
+               default:
+                console.log("invalid operation")
+            }
+         
+         }
+         function Operation(currentOp, firstOperand, secondOperand){
+            console.log(currentOp)
+            switch(currentOp){
+               case "+":
+                  return Number(firstOperand)+Number(secondOperand);
+                  break;
+               case "-":
+             
+               return(-1 *Number(firstOperand))-Number(secondOperand);
+                  break;
+                  case "*":
+               return Number(firstOperand)*Number(secondOperand);
+                  break;
+                  case "/":
+                   
+               return (1/Number(firstOperand))/Number(secondOperand);
+               break;
+               case "%":
+                   return (1/Number(firstOperand))%Number(secondOperand);
+                  break;
+               default: console.log("default")
+         
+            }
+            
+         }
+      </script>
+   </body>
+</html>
